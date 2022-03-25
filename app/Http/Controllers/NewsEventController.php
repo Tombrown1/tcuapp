@@ -347,12 +347,12 @@ class NewsEventController extends Controller
         
                     $last_image = 'images/slider/'.$name_gen; 
                 }
-                elseif(env('APP_ENV') == 'production')
-                {
+                else{
+
                     $file =  $request->file('image');
                     $image_name = $file->getRealPath();
 
-                Cloudder::upload($image_name, null);                
+                    Cloudder::upload($image_name, null);                
                     
                     list($width, $height) = getimagesize($image_name);
         
@@ -360,7 +360,6 @@ class NewsEventController extends Controller
                     $last_image = $image_url;
                     
                 }
-                
             
             }  
         

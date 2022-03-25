@@ -94,9 +94,10 @@ class NewsEventController extends Controller
 
 
         // return $announce;
-            $announce->save();
-        
+           if($announce->save())
+           {                  
             return back()->with('message', "Announcement Created Successfully!");
+           }
         
 
     }
@@ -226,13 +227,9 @@ class NewsEventController extends Controller
                 $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
                 $last_image = $image_url;
             }
-            $gallery_image = $request->file('image');
-            $name_gen = hexdec(Uniqid()).'.'.$gallery_image->getClientOriginalExtension();
-            image::make($gallery_image)->resize(800,640)->save('images/gallery/'.$name_gen);
-
-            $last_image = 'images/gallery/'.$name_gen;
-           
+            
         }
+        
         $user_id = Auth::User()->id;
         // return $user_id;
         $save_gallery = new Gallery;

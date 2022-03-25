@@ -52,29 +52,24 @@ class NewsEventController extends Controller
             'message' => 'required',
         ]);
             
-
-        $user_id = Auth::User()->id;
-        // return $request;
-
         $announce = new announcement;
 
-        $announce->user_id = $user_id;
-        $announce->annouce_cat_id = $request->cat_id;
-        $announce->title = $request->title;
-        $announce->message = $request->message;
-
             // Script for image Validation;
-        if($request->hasfile('image')){
+        if($request->hasfile('image'))
+        {
             $request->validate([
                 'image' => 'required',
                 'image' => 'mimes:png,jpg,pdf,jpeg,gif|max:2048'
             ]);
-            
-            if(env('APP_ENV') == 'local'){
-                $file = $request->file('image');
-                $path = Storage::disk('public')->putFile('announcement', $file);
-                $announce->image = $path;
-            }else{
+             $image= $request->File('image');
+
+            if(env('APP_ENV') == 'local')
+            {
+                $file = $image;
+                $path = Storage::disk('public')->putFile('announcement', $file);               
+                
+            }elseif(env('APP_ENV' == 'production'))
+            {
                 $image_name = $file->getRealPath();
                 Cloudder::upload($image_name, null);
                 
@@ -85,10 +80,17 @@ class NewsEventController extends Controller
                 $path = $image_url;
             }
 
-            $file = $request->file('image');
-            $path = Storage::disk('public')->putFile('announcement', $file);
-            $announce->image = $path;
         }
+        
+        $user_id = Auth::User()->id;
+        // return $request;
+        
+        $announce->user_id = $user_id;
+        $announce->annouce_cat_id = $request->cat_id;
+        $announce->title = $request->title;
+        $announce->message = $request->message;
+        $announce->image = $path;
+
 
         // return $announce;
         if($announce->save())

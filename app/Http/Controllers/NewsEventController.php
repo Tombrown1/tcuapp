@@ -62,16 +62,14 @@ class NewsEventController extends Controller
                 'image' => 'required',
                 'image' => 'mimes:png,jpg,pdf,jpeg,gif|max:2048'
             ]);
-             $image= $request->File('image');
+             $image= $request->file('image');
 
             if(env('APP_ENV') == 'local')
             {
                 $file = $image;
-                $path = Storage::disk('public')->putFile('announcement', $file);               
+                $path = Storage::disk('public')->putFile('announcement', $file);    
+            }else{
                 
-            }elseif(env('APP_ENV' == 'production'))
-            
-            {
                 $file = $image;
                 $image_name = $file->getRealPath();
                 Cloudder::upload($image_name, null);
@@ -80,10 +78,8 @@ class NewsEventController extends Controller
     
                 $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
 
-                $path = $image_url;
-            }
-
-        }else{
+                $path = $image_url; 
+            } 
 
         }
         
@@ -97,7 +93,7 @@ class NewsEventController extends Controller
         $announce->image = $path;
 
 
-        // return $announce;
+        return $announce;
         if($announce->save())
         {
             return back()->with('message', "Announcement Created Successfully!");

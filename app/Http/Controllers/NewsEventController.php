@@ -206,30 +206,35 @@ class NewsEventController extends Controller
             'gallery_cat_id' =>'required',
             'image_name' =>'required',
         ]);
+        $last_image = null;
         // Script for image Validation;
         if($request->hasfile('image')){
             $request->validate([
                 'image' => 'required',
                 'image' => 'mimes:png,jpg,pdf,jpeg,gif|max:2048'
             ]);
-            if(env('APP_ENV') == 'local'){
-                $gallery_image = $request->file('image');
+                $file = $request->file('image');
+            if(env('env1') == 'local'){
+                $gallery_image = $file;
                 $name_gen = hexdec(Uniqid()).'.'.$gallery_image->getClientOriginalExtension();
                 image::make($gallery_image)->resize(800,640)->save('images/gallery/'.$name_gen);
 
                 $last_image = 'images/gallery/'.$name_gen;
             }else{
+                $file = $request->file('image');
                 $image_name = $file->getRealPath();
+
                 Cloudder::upload($image_name, null);
                 
                 list($width, $height) = getimagesize($image_name);
     
                 $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+
                 $last_image = $image_url;
             }
             
         }
-        
+
         $user_id = Auth::User()->id;
         // return $user_id;
         $save_gallery = new Gallery;
@@ -238,7 +243,7 @@ class NewsEventController extends Controller
         $save_gallery->image_name = $request->image_name;
         $save_gallery->image = $last_image;
 
-        // return $save_gallery;
+        return $save_gallery;
         if($save_gallery->save())
         {
             return back()->with('message', 'Gallery images successfully saved!');

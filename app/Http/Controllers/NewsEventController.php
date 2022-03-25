@@ -62,7 +62,7 @@ class NewsEventController extends Controller
                 'image' => 'required',
                 'image' => 'mimes:png,jpg,pdf,jpeg,gif|max:2048'
             ]);
-             $image= $request->file('image');
+             $image = $request->file('image');
 
             if(env('APP_ENV') == 'local')
             {
@@ -339,9 +339,11 @@ class NewsEventController extends Controller
                     'image' => 'required',
                     'image' => 'mimes:jpeg,jpg,gif,png,pdf|max:6144'
                 ]);
+                $slide_file = $request->file('image');
 
                 if(env('APP_ENV') == 'local'){
-                    $slider_image = $request->file('image');
+
+                    $slider_image = $slide_file;
                     $name_gen = hexdec(Uniqid()).'.'.$slider_image->getClientOriginalExtension();
                     image::make($slider_image)->resize(2000,1333)->save('images/slider/'.$name_gen);
         
@@ -349,7 +351,7 @@ class NewsEventController extends Controller
                 }
                 else{
 
-                    $file =  $request->file('image');
+                    $file =  $slide_file;
                     $image_name = $file->getRealPath();
 
                     Cloudder::upload($image_name, null);                

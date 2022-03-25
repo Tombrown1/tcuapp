@@ -70,7 +70,9 @@ class NewsEventController extends Controller
                 $path = Storage::disk('public')->putFile('announcement', $file);               
                 
             }elseif(env('APP_ENV' == 'production'))
+            
             {
+                $file = $image;
                 $image_name = $file->getRealPath();
                 Cloudder::upload($image_name, null);
                 
@@ -80,6 +82,8 @@ class NewsEventController extends Controller
 
                 $path = $image_url;
             }
+
+        }else{
 
         }
         

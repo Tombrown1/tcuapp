@@ -93,11 +93,11 @@ class NewsEventController extends Controller
         $announce->image = $path;
 
 
-        return $announce;
-        if($announce->save())
-        {
+        // return $announce;
+            $announce->save();
+        
             return back()->with('message', "Announcement Created Successfully!");
-        }
+        
 
     }
     

@@ -3,8 +3,6 @@
 /public/storage
 /public/assets
 /public/assets2
-/public/frontent
-/public/backend
 /public/images
 /storage/*.key
 /vendor

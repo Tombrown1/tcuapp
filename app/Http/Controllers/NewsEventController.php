@@ -53,6 +53,7 @@ class NewsEventController extends Controller
         ]);
             
         $announce = new announcement;
+        $path = null;
 
             // Script for image Validation;
         if($request->hasfile('image'))

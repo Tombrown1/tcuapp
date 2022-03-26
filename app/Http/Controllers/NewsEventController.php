@@ -341,7 +341,7 @@ class NewsEventController extends Controller
                 ]);
                 $image = $request->file('image');
 
-                if(env('APP_ENV') == 'local'){
+                if(env('APP_ENV') == 'production'){
 
                     $slider_image = $image;
                     $name_gen = hexdec(Uniqid()).'.'.$slider_image->getClientOriginalExtension();
@@ -352,7 +352,6 @@ class NewsEventController extends Controller
                 else{
                     $file = $image;
                     $image_name = $file->getRealPath();
-
                     Cloudder::upload($image_name, null);                
                     
                     list($width, $height) = getimagesize($image_name);
@@ -370,7 +369,7 @@ class NewsEventController extends Controller
         $slider->description = $request->description;
         $slider->image = $last_image;
 
-        // return $slider;
+        return $slider;
 
         $slider->save();
 

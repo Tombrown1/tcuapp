@@ -369,7 +369,7 @@ class NewsEventController extends Controller
         $slider->description = $request->description;
         $slider->image = $last_image;
 
-        return $slider;
+        // return $slider;
 
         $slider->save();
 

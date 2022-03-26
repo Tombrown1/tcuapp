@@ -60,7 +60,7 @@ class NewsEventController extends Controller
         {
             $request->validate([
                 'image' => 'required',
-                'image' => 'mimes:png,jpg,pdf,jpeg,gif|max:2048'
+                'image' => 'mimes:png,jpg,pdf,jpeg,gif'
             ]);
              $image = $request->file('image');
 
@@ -122,7 +122,7 @@ class NewsEventController extends Controller
         if($request->hasfile('image'))
         {
             $request->validate([
-                'image' => 'mimes:png,jpg,jpeg,pdf,gif|max:2048'
+                'image' => 'mimes:png,jpg,jpeg,pdf,gif'
             ]);
 
             $file = $request->file('image');
@@ -210,7 +210,7 @@ class NewsEventController extends Controller
         if($request->hasfile('image')){
             $request->validate([
                 'image' => 'required',
-                'image' => 'mimes:png,jpg,pdf,jpeg,gif|max:2048'
+                'image' => 'mimes:png,jpg,pdf,jpeg,gif'
             ]);
 
             $file = $request->file('image');
@@ -264,7 +264,7 @@ class NewsEventController extends Controller
         if($request->hasfile('image'))
         {
             $request->validate([
-                'image' => 'mimes:jpg,png,jpeg,gif|max:4096'
+                'image' => 'mimes:jpg,png,jpeg,gif'
             ]);
 
             $file = $request->file('image');
@@ -356,7 +356,7 @@ class NewsEventController extends Controller
             {   
                 $request->validate([
                     'image' => 'required',
-                    'image' => 'mimes:jpeg,jpg,gif,png,pdf|max:6144'
+                    'image' => 'mimes:jpeg,jpg,gif,png,pdf'
                 ]);
                 $image = $request->file('image');
 
@@ -422,7 +422,7 @@ class NewsEventController extends Controller
         if($request->hasFile('image'))
         {
             $request->validate([
-                'image' => 'mimes:jpg,jpeg,png,pdf|max:6144'
+                'image' => 'mimes:jpg,jpeg,png,pdf'
             ]);
             $file = $request->file('image');
             $last_image = null;

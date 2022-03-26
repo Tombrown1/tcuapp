@@ -38,7 +38,7 @@
                                 <div class="card-body">
                                     <div class="card">
                                         <h3>{{$view_announce->title}}</h3> <br>
-                                        <img src="{{asset('/storage/'.$view_announce->image)}}"  alt=""> <br>
+                                        <img src="{{asset($view_announce->image)}}"  alt=""> <br>
                                         <p class="text-justify">{{$view_announce->message}}</p>
                                     </div>
                                 </div>

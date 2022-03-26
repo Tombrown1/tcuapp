@@ -18,7 +18,7 @@ $sliders = DB::table('sliders')->get();
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">{{$slider->title}}</h2>
                 <p class="animate__animated animate__fadeInUp">{{$slider->description}}</p>
-                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                <!-- <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a> -->
               </div>
             </div>
           </div>

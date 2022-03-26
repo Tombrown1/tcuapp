@@ -341,7 +341,7 @@ class NewsEventController extends Controller
                 ]);
                 $image = $request->file('image');
 
-                if(env('APP_ENV') == 'production'){
+                if(env('APP_ENV') == 'local'){
 
                     $slider_image = $image;
                     $name_gen = hexdec(Uniqid()).'.'.$slider_image->getClientOriginalExtension();

@@ -147,9 +147,8 @@ class NewsEventController extends Controller
                 $path = Storage::disk('public')->putFile('announcement', $img_file);                
                 // $announce->image = $path;
                 // return $path;
-            }
-                elseif(env('APP_ENV') == 'production')
-            {
+            }else{
+
                 $image_name = $file->getRealPath();
                 Cloudder::upload($image_name, null);
                 
@@ -158,22 +157,22 @@ class NewsEventController extends Controller
                 $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
 
                 $path = $image_url;
+                
             }
-
             // return $path;
         }else{
            $path = $update_announce->image; 
         }
 
         $user_id = Auth::user()->id;
-       
-        // return $update_announce;
 
         $update_announce->user_id = $user_id;
         $update_announce->annouce_cat_id = $request->annouce_cat_id;
         $update_announce->title = $request->title;
         $update_announce->message = $request->message;
         $update_announce->image = $path;
+
+        // return $update_announce;
 
         if($update_announce->update())
         {
@@ -213,8 +212,10 @@ class NewsEventController extends Controller
                 'image' => 'required',
                 'image' => 'mimes:png,jpg,pdf,jpeg,gif|max:2048'
             ]);
-                $file = $request->file('image');
-            if(env('env1') == 'local'){
+
+            $file = $request->file('image');
+
+            if(env('APP_ENV') == 'local'){
                 $gallery_image = $file;
                 $name_gen = hexdec(Uniqid()).'.'.$gallery_image->getClientOriginalExtension();
                 image::make($gallery_image)->resize(800,640)->save('images/gallery/'.$name_gen);
@@ -243,7 +244,7 @@ class NewsEventController extends Controller
         $save_gallery->image_name = $request->image_name;
         $save_gallery->image = $last_image;
 
-        return $save_gallery;
+        // return $save_gallery;
         if($save_gallery->save())
         {
             return back()->with('message', 'Gallery images successfully saved!');
@@ -257,34 +258,52 @@ class NewsEventController extends Controller
            'image_name' => 'required',
        ]);
 
-       if(env('APP_ENV') == 'local'){
-        $gallery_image = $request->file('image');
-        $name_gen = hexdec(Uniqid()).'.'.$gallery_image->getClientOriginalExtension();
-        image::make($gallery_image)->resize(800,640)->save('images/gallery/'.$name_gen);
-
-        $last_image = 'images/gallery/'.$name_gen;
-        }else{
-            $image_name = $file->getRealPath();
-            Cloudder::upload($image_name, null);
-            
-            list($width, $height) = getimagesize($image_name);
-
-            $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
-            $last_image = $image_url;
-        }
-
-       $old_image = $request->old_image;
-       //Validate Image
-       $gallery_image = $request->file('image');
-       $name_gen = hexdec(uniqid()).'.'.$gallery_image->getClientOriginalExtension();
-       image::make($gallery_image)->resize(800, 640)->save('images/gallery/'.$name_gen);
-       $last_image = 'images/gallery/'.$name_gen;
-
-        $user_id = Auth::user()->id;
-
-        unlink($old_image);
-
         $update_image = Gallery::find($id);
+        $last_image = null;
+
+        if($request->hasfile('image'))
+        {
+            $request->validate([
+                'image' => 'mimes:jpg,png,jpeg,gif|max:4096'
+            ]);
+
+            $file = $request->file('image');
+
+            if(env('APP_ENV') == 'local'){
+                if(!empty($update_image->image))
+                {
+                    if(file_exists($update_image->image))
+                    {
+                        unlink($update_image->image);
+                        $update_image->image = null;
+                        $update_image->update();
+                    }else{
+                    $update_image->image = null;
+                    $update_image->update();
+                    }
+                }
+                $gallery_image = $file;
+                $name_gen = hexdec(Uniqid()).'.'.$gallery_image->getClientOriginalExtension();
+                image::make($gallery_image)->resize(800,640)->save('images/gallery/'.$name_gen);
+
+                $last_image = 'images/gallery/'.$name_gen;
+
+            }else{
+
+                $image_name = $file->getRealPath();
+                Cloudder::upload($image_name, null);
+                
+                list($width, $height) = getimagesize($image_name);
+    
+                $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+                $last_image = $image_url;
+            }
+
+        }else{
+            $last_image = $update_image->image;
+        }
+    
+        $user_id = Auth::user()->id;
 
         $update_image->gallery_cat_id = $request->gallery_cat_id;
         $update_image->user_id = $user_id;
@@ -331,7 +350,7 @@ class NewsEventController extends Controller
         ]);
         // Script for image Validation;
         $slider = new Slider;
-        $last_image = null;
+        $path = null;
 
             if($request->hasFile('image'))
             {   
@@ -341,25 +360,35 @@ class NewsEventController extends Controller
                 ]);
                 $image = $request->file('image');
 
-                if(env('APP_ENV') == 'local'){
+                if(env('APP_ENV') == 'production'){
 
                     $slider_image = $image;
                     $name_gen = hexdec(Uniqid()).'.'.$slider_image->getClientOriginalExtension();
                     image::make($slider_image)->resize(2000,1333)->save('images/slider/'.$name_gen);
         
-                    $last_image = 'images/slider/'.$name_gen; 
-                }
-                else{
-                    $file = $image;
-                    $image_name = $file->getRealPath();
-                    Cloudder::upload($image_name, null);                
+                    $path = 'images/slider/'.$name_gen; 
+                }else{
+
+                    // $file = $image;
+                    // $image_name = $file->getRealPath();
+                    // Cloudder::upload($image_name, null);                
                     
-                    list($width, $height) = getimagesize($image_name);
+                    // list($width, $height) = getimagesize($image_name);
         
-                    $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height" => $height]);
-                    $last_image = $image_url;
+                    // $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height" => $height]);
+                    // $last_image = $image_url;
+                    $file = $image;
+                        $image_name = $file->getRealPath();
+                        Cloudder::upload($image_name, null);
+                        
+                        list($width, $height) = getimagesize($image_name);
+            
+                        $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+        
+                        $path = $image_url; 
                     
-                }
+                    }
+            
             
             }  
         
@@ -367,7 +396,7 @@ class NewsEventController extends Controller
         $slider->user_id = $user_id;
         $slider->title = $request->title;
         $slider->description = $request->description;
-        $slider->image = $last_image;
+        $slider->image = $path;
 
         // return $slider;
 
@@ -420,14 +449,7 @@ class NewsEventController extends Controller
     
                 $last_image = 'images/slider/'.$name_gen;
 
-            }elseif(env('APP_ENV') == 'production'){
-
-                //check if old iamge file is present and remove
-                
-                // if(!empty($update_slider->image)){
-                //     Cloudder::destroyImages('https://res.cloudinary.com/djgffdhhu/image/upload/v1647679363/smxrqzzlkdlae6twi8na.jpg',["folder" => "tcu"]);
-                // }
-
+            }else{
 
                 //get image name
                 $image_name = $file->getRealPath();
@@ -442,6 +464,7 @@ class NewsEventController extends Controller
                 $last_image = $image_url;
                 
             }
+
         }else{
             $last_image = $update_slider->image;
         }
@@ -455,6 +478,7 @@ class NewsEventController extends Controller
 
         $update_slider->update();
 
+        // return $update_slider;
 
         return back()->with('message', 'Record Updated successfully!');
         

@@ -91,7 +91,7 @@
                                                                   <form action="{{route('update.gallery',['id'=>$gallery->id])}}" method="POST" enctype="multipart/form-data">
                                                                      @csrf 
                                                                      <input type="hidden" name="user_id" value="{{$gallery->User_id}}">
-                                                                     <input type="hidden" name="old_image" value="{{$gallery->image}}">
+                                                                    
                                                                      <div class="input-group mb-3">
                                                                         <div class="input-group mb-3">
                                                                            <div class="input-group-prepend">

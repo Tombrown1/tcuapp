@@ -4,7 +4,7 @@
       <div class="logo">
         <!-- <h1><a href="index.html"><span>Technical </span>Unit</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html"><img src="{{asset('assets2/logos/tcu_winners_logo.png')}}" alt="" class="img-fluid"></a>
+        <a href="index.html"><img src="{{asset('frontend/assets/logos/tcu_winners_logo.png')}}" alt="" class="img-fluid"></a>
       </div>
 
       <nav id="navbar" class="navbar">

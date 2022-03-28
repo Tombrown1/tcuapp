@@ -28,15 +28,18 @@ class UserDetailController extends Controller
             // 'image' => ['required|image|mimes:png,jpeg,jpg,gif,pdf|max:2048'],  
             'marital_status' => ['required'],   
         ]);
+        
+        $userdetail = UserDetail::find($id);
+
         if($request->hasFile('passport'))
         {
             $request->validate([
                 'passport' => 'required',
                 'passport' => 'mimes:jpeg,jpg,png,gif,pdf|max:2048'
             ]);
-
+               $file = $request->file('passport');
             if(env('APP_ENV') == 'local'){
-                $passport = $request->file('passport');
+                $passport = $file;
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($passport->getClientOriginalExtension());
                 $img_name = $name_gen.'.'.$img_ext;
@@ -44,6 +47,7 @@ class UserDetailController extends Controller
                 $last_img = $up_location.$img_name;
 
             }else{
+                $file = $request->file('passport');
                 $image_name = $file->getRealPath();
                 Cloudder::upload($image_name, null);
                 
@@ -55,21 +59,13 @@ class UserDetailController extends Controller
             }
         }
 
-        // return $request;
-        
-        $passport = $request->file('passport');
-        $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($passport->getClientOriginalExtension());
-        $img_name = $name_gen.'.'.$img_ext;
-        $up_location = 'images/passport/';
-        $last_img = $up_location.$img_name;
-        $passport->move($up_location,$img_name);
+       
 
         $created_by = Auth::user()->id;
 
         // return $request->hasfile('passport');
         
-        $userdetail = UserDetail::find($id);
+        
         // $userdetail = new UserDetail;
 
         // return $userdetail;

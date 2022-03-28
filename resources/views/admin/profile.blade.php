@@ -31,10 +31,10 @@
 
                             </div>
                             <div class="float-right mb-5">
-                                    @if($user->status >=5)
-                                    <button type="button" class="model_bt btn btn-primary" data-toggle="modal" data-target="#myModal">Complete User Registeration</button>
+                                    @if($user->status == 4)
+                                   
                                     @else
-
+                                    <button type="button" class="model_bt btn btn-primary" data-toggle="modal" data-target="#myModal">Complete User Registeration</button>
                                     @endif
                                 <a type="button" class="model_bt btn btn-info" href="{{route('edit.personal.detail', ['id' =>$user->id])}}">Edit User</a> 
                             </div>

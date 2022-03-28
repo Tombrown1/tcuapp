@@ -285,25 +285,25 @@ class UserDetailController extends Controller
         // return $personal_detail;
 
         if($personal_detail->update())
-        {
-                // This logic here helps to update user table with user name during 
-                //editing in userdetails table
-                $update_user = User::find($personal_detail->user_id);
-                $name = explode(" ", trim($request->firstname));
-                $username = $name[0].rand(4,10000);
-                $password = $username;
+            {
+                    // This logic here helps to update user table with user name during 
+                    //editing in userdetails table
+                    $update_user = User::find($personal_detail->user_id);
+                    $name = explode(" ", trim($request->firstname));
+                    $username = $name[0].rand(4,1000);
+                    $password = $username;
 
-                $update_user->name = $request->surname.' '.$request->firstname.' '.$request->lastname;
-                $update_user->gender = $request->gender;
-                $update_user->email = $request->email;
-                $update_user->username = $username;
-                $update_user->password = $password;
-                // return $update_user;
+                    $update_user->name = $request->surname.' '.$request->firstname.' '.$request->lastname;
+                    $update_user->gender = $request->gender;
+                    $update_user->email = $request->email;
+                    $update_user->username = $username;
+                    $update_user->password = $password;
+                    // return $update_user;
 
-                $update_user->update();
+                    $update_user->update();
 
-            return back()->with('message', 'Personal Details Updated Successfully, kindly proceed in updating Next of Kin Record, if need be!');
-        } 
+                return back()->with('message', 'Personal Details Updated Successfully, kindly proceed in updating Next of Kin Record, if need be!');
+            } 
               
     }
         

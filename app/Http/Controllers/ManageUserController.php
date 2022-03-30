@@ -18,7 +18,7 @@ class ManageUserController extends Controller
     {   
         $users = UserDetail::with('user', 'posting')->orderBy('user_id', 'DESC')->get();  
         // $users = User::get();  
-        // return $users;      
+        // return $users;    
         return view('admin.manage_user', compact('users'));
     }
   

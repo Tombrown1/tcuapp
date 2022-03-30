@@ -103,8 +103,9 @@ class UserDetailController extends Controller
         if($userdetail->save())
         {
             //This Logic will have to update user table status with 1 once this field is been saved in user details table for easy identification
-            $update_status = User::find($userdetail->user_id);
-            $update_status->status = 1;
+            $update_user = User::find($userdetail->user_id);
+            $update_user->status = 1;
+            $update_user->is_posted = 0;
             $update_status->save();
 
             session(['last_id' => $userdetail->id]);

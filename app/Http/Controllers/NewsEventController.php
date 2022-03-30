@@ -13,6 +13,7 @@ use JD\Cloudder\Facades\Cloudder;
 use Image;
 use Storage;
 use Auth;
+use Carbon\Carbon;
 
 class NewsEventController extends Controller
 {
@@ -207,22 +208,27 @@ class NewsEventController extends Controller
         ]);
         $last_image = null;
         // Script for image Validation;
-        if($request->hasfile('image')){
-            $request->validate([
-                'image' => 'required',
-                'image' => 'mimes:png,jpg,pdf,jpeg,gif'
-            ]);
+        // if($request->hasfile('image')){
+        //     $request->validate([
+        //         'image' => 'required',
+        //         'image' => 'mimes:png,jpeg,jpg,png'
+        //     ]);
+        // }
+        $image = $request->file('image');
 
-            $file = $request->file('image');
-
+        foreach($image as $gallery)
+        {           
             if(env('APP_ENV') == 'local'){
-                $gallery_image = $file;
-                $name_gen = hexdec(Uniqid()).'.'.$gallery_image->getClientOriginalExtension();
-                image::make($gallery_image)->resize(800,640)->save('images/gallery/'.$name_gen);
+
+                $name_gen = hexdec(Uniqid()).'.'.$gallery->getClientOriginalExtension();
+                image::make($gallery)->resize(1600,1280)->save('images/gallery/'.$name_gen);
 
                 $last_image = 'images/gallery/'.$name_gen;
             }else{
-                $file = $request->file('image');
+
+                $image = $request->file('image');
+
+                foreach($image as $file){                
                 $image_name = $file->getRealPath();
 
                 Cloudder::upload($image_name, null);
@@ -232,23 +238,32 @@ class NewsEventController extends Controller
                 $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
 
                 $last_image = $image_url;
+               }
             }
-            
-        }
+                // return $last_image;
 
-        $user_id = Auth::User()->id;
-        // return $user_id;
-        $save_gallery = new Gallery;
-        $save_gallery->user_id = $user_id;
-        $save_gallery->gallery_cat_id = $request->gallery_cat_id;
-        $save_gallery->image_name = $request->image_name;
-        $save_gallery->image = $last_image;
-
-        // return $save_gallery;
-        if($save_gallery->save())
-        {
-            return back()->with('message', 'Gallery images successfully saved!');
+                $user_id = Auth::User()->id;
+                // return $user_id;
+                Gallery::insert([
+                    'user_id' => $user_id,
+                    'gallery_cat_id' => $request->gallery_cat_id,
+                    'image_name' => $request->image_name,
+                    'image' => $last_image,
+                    'created_at' => Carbon::now()
+                ]);
+                // $save_gallery = new Gallery;
+                // $save_gallery->user_id = $user_id;
+                // $save_gallery->gallery_cat_id = $request->gallery_cat_id;
+                // $save_gallery->image_name = $request->image_name;
+                // $save_gallery->image = $last_image;
+        
+                // return $save_gallery;
+                // $save_gallery->save();
         }
+        // return $last_image;
+
+        return back()->with('message', 'Gallery images successfully saved!');
+       
     }
 
     public function update_gallery(Request $request, $id)

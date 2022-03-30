@@ -117,7 +117,7 @@
                                                                            <div class="input-group-prepend">
                                                                               <span class="input-group-text" id="basic-addon3">Image</span>
                                                                            </div>
-                                                                           <input type="file" name="image" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
+                                                                           <input type="file" name="image" class="form-control" id="basic-url" aria-describedby="basic-addon3" multiple="multiple" required>
                                                                         </div>
                                                                         <div class="form-group">
                                                                            <img src="{{asset($gallery->image)}}" height="100px" width="100px" alt="">
@@ -185,7 +185,7 @@
                               <div class="input-group-prepend">
                                  <span class="input-group-text" id="basic-addon3">Image</span>
                               </div>
-                              <input type="file" name="image" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
+                              <input type="file" name="image[]" class="form-control" id="basic-url" aria-describedby="basic-addon3" multiple="" required>
                            </div>
                            
                         </div>                     

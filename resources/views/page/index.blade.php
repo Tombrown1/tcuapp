@@ -265,25 +265,7 @@
                 <a href="#">
                   <img src="{{asset('frontend/assets/images/omotosho.jpg')}}" alt="">
                 </a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+               
               </div>
               <div class="team-content text-center">
                 <h4>Bro Omotosho Samuel</h4>
@@ -299,25 +281,7 @@
                   <img src="{{asset('frontend/assets/images/davis.jpg')}}" alt="">
 
                 </a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                
               </div>
               <div class="team-content text-center">
                 <h4>Bro Davis Obeleye</h4>
@@ -333,25 +297,7 @@
                   <img src="{{asset('frontend/assets/images/victor2.jpg')}}" alt="">
 
                 </a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+               
               </div>
               <div class="team-content text-center">
                 <h4>Bro Victor Ngah</h4>
@@ -367,25 +313,7 @@
                   <img src="{{asset('frontend/assets/images/pst_david.jpg')}}" alt="">
 
                 </a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="bi bi-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                
               </div>
               <div class="team-content text-center">
                 <h4>Pst David Durotiwon</h4>

@@ -57,8 +57,8 @@
                   <div class="add-actions text-center">
                     <div class="project-dec">
                       <a class="portfolio-lightbox" data-gallery="myGallery" href="{{asset($image->image)}}">
-                        <h4>Business City</h4>
-                        <span>Web Development</span>
+                        <h4>TCU Winner's Chapel D/Line</h4>
+                        <span>Port Harcourt</span>
                       </a>
                     </div>
                   </div>

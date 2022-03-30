@@ -106,7 +106,7 @@ class UserDetailController extends Controller
             $update_user = User::find($userdetail->user_id);
             $update_user->status = 1;
             $update_user->is_posted = 0;
-            $update_status->save();
+            $update_user->save();
 
             session(['last_id' => $userdetail->id]);
             return back()->with('message', 'User Personal Details is added, please proceed and update Next of Kin Record');

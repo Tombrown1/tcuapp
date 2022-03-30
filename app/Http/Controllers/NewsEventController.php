@@ -218,7 +218,7 @@ class NewsEventController extends Controller
 
         foreach($image as $gallery)
         {           
-            if(env('APP_ENV') == 'production')
+            if(env('APP_ENV') == 'local')
             {
 
                 $name_gen = hexdec(Uniqid()).'.'.$gallery->getClientOriginalExtension();

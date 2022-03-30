@@ -218,7 +218,8 @@ class NewsEventController extends Controller
 
         foreach($image as $gallery)
         {           
-            if(env('APP_ENV') == 'local'){
+            if(env('APP_ENV') == 'production')
+            {
 
                 $name_gen = hexdec(Uniqid()).'.'.$gallery->getClientOriginalExtension();
                 image::make($gallery)->resize(1600,1280)->save('images/gallery/'.$name_gen);
@@ -226,10 +227,8 @@ class NewsEventController extends Controller
                 $last_image = 'images/gallery/'.$name_gen;
             }else{
 
-                $image = $request->file('image');
-
-                foreach($image as $file){                
-                $image_name = $file->getRealPath();
+                // $gallery = $request->file('image');
+                $image_name = $gallery->getRealPath();
 
                 Cloudder::upload($image_name, null);
                 
@@ -238,7 +237,8 @@ class NewsEventController extends Controller
                 $image_url = Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
 
                 $last_image = $image_url;
-               }
+            
+               
             }
                 // return $last_image;
 
@@ -260,7 +260,6 @@ class NewsEventController extends Controller
                 // return $save_gallery;
                 // $save_gallery->save();
         }
-        // return $last_image;
 
         return back()->with('message', 'Gallery images successfully saved!');
        

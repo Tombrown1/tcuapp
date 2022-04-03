@@ -31,10 +31,10 @@
 
                             </div>
                             <div class="float-right mb-5">
-                                    @if($user->status == 4)
-                                   
-                                    @else
+                                    @if($user->status !=4)
                                     <button type="button" class="model_bt btn btn-primary" data-toggle="modal" data-target="#myModal">Complete User Registeration</button>
+                                    @else
+                                   
                                     @endif
                                 <a type="button" class="model_bt btn btn-info" href="{{route('edit.personal.detail', ['id' =>$user->id])}}">Edit User</a> 
                             </div>
@@ -298,9 +298,9 @@
                                                                                     </div>
 
                                                                                     <div class="input-group mb-3">
-                                                                                        @if($user->details->passport != Null)
+                                                                                        @if($user->passport != Null)
                                                                                         <img width="100px" height="100px"
-                                                                                        src="{{asset($user->details->passport)}}" alt="">
+                                                                                        src="{{asset($user->passport)}}" alt="">
                                                                                         @else
                                                                                             <p class="text-center">No passport uploaded yet</p>
                                                                                         @endif                                                                                        
@@ -393,7 +393,7 @@
                                                                                     <div class="input-group mb-3">
                                                                                         @if($user->details->passport != Null)
                                                                                         <img width="100px" height="100px"
-                                                                                        src="{{asset($user->details->passport)}}" alt="">
+                                                                                        src="{{asset($user->passport)}}" alt="">
                                                                                         @else
                                                                                             <p class="text-center">No passport uploaded yet</p>
                                                                                         @endif

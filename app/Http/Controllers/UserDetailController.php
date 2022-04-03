@@ -63,13 +63,6 @@ class UserDetailController extends Controller
 
         $created_by = Auth::user()->id;
 
-        // return $request->hasfile('passport');
-        
-        
-        // $userdetail = new UserDetail;
-
-        // return $userdetail;
-
         // $userdetail->user_id = $request->user_id;
         $userdetail->created_by = $created_by;
         $userdetail->surname = $request->surname;

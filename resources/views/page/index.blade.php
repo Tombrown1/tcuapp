@@ -13,7 +13,7 @@
               <h2>Unit Announcement</h2>
             </div>
           </div>
-          <div class="slider owl-carousel">
+          <div class="slider owl-carousel row">
               @foreach($announcement as $announce)
                 <div class="card">
                     <div class="img">

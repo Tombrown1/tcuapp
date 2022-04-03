@@ -87,7 +87,7 @@ class manageMemberController extends Controller
         $post->start_date = $s_date;
         $post->end_date = $e_date;
 
-        return $post;
+        // return $post;
 
         // return  $currentDate = date('Y-m-d', strtotime('now'));
 

@@ -73,7 +73,10 @@
                                                 <td>{{$exp_member->start_date}}</td>
                                                 <td>{{$exp_member->expired_at}}</td>
                                                 <td>{{$exp_member->duration}}</td>
-                                                <td>{{$exp_member->is_terminated}}</td>
+                                                <td>
+                                                  @if($exp_member->is_terminated != null)
+                                                  @endif
+                                                </td>
                                                 <td>{{$exp_member->reason}}</td>
                                                 <td style="color:red">{{$exp_member->date_terminated}}</td>
                                              </tr>

@@ -16,7 +16,7 @@ class Posting extends Model
 
     public function details()
     {
-        return $this->belongsTo(UserDetail::class);
+        return $this->belongsTo(UserDetail::class, 'user_id');
     }
 
     public function subunit()

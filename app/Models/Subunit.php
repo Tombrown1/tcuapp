@@ -18,6 +18,7 @@ class Subunit extends Model
     {
         return $this->hasOne(User::class);
     }
+    
 
     public function posting()
     {

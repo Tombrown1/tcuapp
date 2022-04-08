@@ -6,7 +6,7 @@
 @include('page.body.slider')
     <br><br>
     <!--Announcement-->
-    <div id="about" class="about-area area-padding">
+    <div id="event" class="about-area area-padding">
       <div class="container">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline text-center">
@@ -96,7 +96,7 @@
     </div><!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
-    <div id="services" class="services-area area-padding">
+    <div id="#" class="services-area area-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -248,7 +248,8 @@
         </div>
       </div>
     </div><!-- End Services Section -->
-     <!-- Team Area Begins Here -->
+
+     <!-- Leaders Area Begins Here -->
      <div id="team" class="our-team-area area-padding">
       <div class="container">
         <div class="row">
@@ -259,7 +260,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
@@ -274,7 +275,7 @@
             </div>
           </div>
           <!-- End column -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
@@ -290,7 +291,7 @@
             </div>
           </div>
           <!-- End column -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
@@ -305,12 +306,43 @@
               </div>
             </div>
           </div>
-          <!-- End column -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
+         
+          
+        </div>
+      </div>
+    </div>
+  
+<!-- Pastors Area Begins Here -->
+     <!-- <div id="team" class="our-team-area area-padding"> -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>Our Unit Pastors</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
-                  <img src="{{asset('frontend/assets/images/pst_david.jpg')}}" alt="">
+                  <img src="{{asset('frontend/assets/images/senior1.jpg')}}" alt="">
+                </a>
+               
+              </div>
+              <div class="team-content text-center">
+                <h4>Pst Joseph Ajibade</h4>
+                <p>State Pastor</p>
+              </div>
+            </div>
+          </div>
+          <!-- End column -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-team-member">
+              <div class="team-img">
+                <a href="#">
+                  <img src="{{asset('frontend/assets/images/pst_david1.jpg')}}" alt="">
 
                 </a>
                 
@@ -321,12 +353,27 @@
               </div>
             </div>
           </div>
-          <!-- End column -->
+
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-team-member">
+              <div class="team-img">
+                <a href="#">
+                  <img src="{{asset('frontend/assets/images/pst_muyiwa1.jpg')}}" alt="">
+
+                </a>
+                
+              </div>
+              <div class="team-content text-center">
+                <h4>Pst Muyiwa</h4>
+                <p>Unit Pastor</p>
+              </div>
+            </div>
+          </div>
+          
+          
         </div>
       </div>
-    </div>
-  
-
+    <!-- </div> -->
 
 
 

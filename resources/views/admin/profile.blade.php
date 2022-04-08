@@ -552,7 +552,7 @@
                                                                                 <div class="input-group-prepend">
                                                                                     <span class="input-group-text" id="basic-addon3">Area of Specialization</span>
                                                                                 </div>
-                                                                                <input readonly type="email" name="area_of_specialization" value="{{$user->details->area_of_specialization}}" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
+                                                                                <input readonly type="text" name="area_of_specialization" value="{{$user->details->area_of_specialization}}" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
                                                                                 </div>                                                                
 
                                                                                 <div class="input-group mb-3">
@@ -615,7 +615,7 @@
                                                                                     <div class="input-group-prepend">
                                                                                         <span class="input-group-text" id="basic-addon3">Area of Specialization</span>
                                                                                     </div>
-                                                                                    <input type="email" name="area_of_specialization" value="{{$user->details->area_of_specialization}}" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
+                                                                                    <input type="text" name="area_of_specialization" value="{{$user->details->area_of_specialization}}" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
                                                                                     </div>                                                                
 
                                                                                     <div class="input-group mb-3">

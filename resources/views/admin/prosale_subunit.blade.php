@@ -27,9 +27,12 @@
                                        <thead>
                                           <tr>
                                              <th>#</th>
-                                             <th>Fullname</th>
+                                             <th>Firstname</th>                                             
+                                             <th>Lastname</th>                                             
                                              <th>Posted By</th>
-                                             <th>Duration</th>
+                                             <th>Phone</th>
+                                             <th>Gender</th>
+                                             <th>Time Posted</th>
                                              <th>End Date</th>
                                                                                          
                                           </tr>
@@ -38,8 +41,11 @@
                                           @foreach($prosale_posted_member as $prosale_posting)
                                           <tr>
                                              <td>{{$loop->index +1}}</td>
-                                             <td>{{App\Models\User::find($prosale_posting->member_id)->name}}</td>
+                                             <td>{{App\Models\UserDetail::find($prosale_posting->member_id)->firstname}}</td>
+                                             <td>{{App\Models\UserDetail::find($prosale_posting->member_id)->lastname}}</td>
                                              <td>{{App\Models\User::find($prosale_posting->user_id)->name}}</td>
+                                             <td>{{App\Models\UserDetail::find($prosale_posting->user_id)->work_phone}}</td>
+                                             <td>{{App\Models\UserDetail::find($prosale_posting->user_id)->gender}}</td>
                                              <td>{{$prosale_posting->created_at->diffForHumans()}}</td>
                                              <td>{{$prosale_posting->end_date}}</td>
                                              

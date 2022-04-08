@@ -30,9 +30,12 @@
                                        <thead>
                                           <tr>
                                              <th>#</th>
-                                             <th>Fullname</th>                                             
+                                             <th>Firstname</th>                                             
+                                             <th>Lastname</th>                                             
                                              <th>Posted By</th>
-                                             <th>Duration</th>
+                                             <th>Phone</th>
+                                             <th>Gender</th>
+                                             <th>Time Posted</th>
                                              <th>End Date</th>                                             
                                           </tr>
                                        </thead>
@@ -40,8 +43,11 @@
                                           @foreach($camera_posted_member as $camera_posting)
                                           <tr>
                                              <td>{{$loop->index +1}}</td>
-                                             <td>{{App\Models\User::find($camera_posting->member_id)->name}}</td>
+                                             <td>{{App\Models\UserDetail::find($camera_posting->member_id)->firstname}}</td>
+                                             <td>{{App\Models\UserDetail::find($camera_posting->member_id)->lastname}}</td>
                                              <td>{{App\Models\User::find($camera_posting->user_id)->name}}</td>
+                                             <td>{{App\Models\UserDetail::find($camera_posting->user_id)->work_phone}}</td>
+                                             <td>{{App\Models\User::find($camera_posting->user_id)->gender}}</td>
                                              <td>{{$camera_posting->created_at->diffForHumans()}}</td>
                                              <td>{{$camera_posting->end_date}}</td>
                                             

@@ -30,9 +30,12 @@
                                        <thead>
                                           <tr>
                                           <th>#</th>
-                                             <th>Fullname</th>                                             
+                                             <th>Firstname</th>                                             
+                                             <th>Lastname</th>                                             
                                              <th>Posted By</th>
-                                             <th>Duration</th>
+                                             <th>Phone</th>
+                                             <th>Gender</th>
+                                             <th>Time Posted</th>
                                              <th>End Date</th>                                              
                                           </tr>
                                        </thead>
@@ -40,8 +43,11 @@
                                           @foreach($cable_posted_member as $cable_posted)
                                           <tr>
                                              <td>{{ $loop->index+1}}</td>
-                                             <td>{{ App\Models\User::find($cable_posted->member_id)->name}}</td>
-                                             <td>{{App\Models\User::find($cable_posted->user_id)->name}}</td>
+                                             <td>{{ App\Models\UserDetail::find($cable_posted->member_id)->firstname}}</td>
+                                             <td>{{App\Models\UserDetail::find($cable_posted->member_id)->lastname }}</td>
+                                             <td>{{App\Models\User::find($cable_posted->user_id)->name }}</td>
+                                             <td>{{App\Models\UserDetail::find($cable_posted->user_id)->work_phone}}</td>
+                                             <td>{{App\Models\User::find($cable_posted->user_id)->gender}}</td>
                                              <td>{{$cable_posted->created_at->diffForHumans()}}</td>
                                              <td>{{$cable_posted->end_date}}</td>
                                              

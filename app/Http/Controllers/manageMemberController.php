@@ -137,6 +137,8 @@ class manageMemberController extends Controller
             'date_terminated' => 'required',
         ]);
 
+        // return $request;
+
         //Is_terminate value meaning
         //Repost = 1
         //Transfer = 2
@@ -171,7 +173,7 @@ class manageMemberController extends Controller
 
         $user = User::find($terminate->member_id);
         $user->is_posted = 0;
-        $user->suspension_id = $request->is_terminate;
+        $user->status = $request->is_terminate;
         $user->update();
         
         $del_posting = Posting::find($terminate->id);

@@ -48,7 +48,6 @@
                                              <td>USA</td>
                                              <td>Female</td>
                                              <td>Yes</td>
-                                             <
                                           </tr>
                                        </tbody>
                                     </table>

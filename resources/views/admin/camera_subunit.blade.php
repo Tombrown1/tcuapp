@@ -40,19 +40,29 @@
                                           </tr>
                                        </thead>
                                        <tbody>
+                                          @unless($camera_posted_member->isEmpty())
                                           @foreach($camera_posted_member as $camera_posting)
                                           <tr>
                                              <td>{{$loop->index +1}}</td>
-                                             <td>{{App\Models\UserDetail::find($camera_posting->member_id)->firstname}}</td>
-                                             <td>{{App\Models\UserDetail::find($camera_posting->member_id)->lastname}}</td>
+                                             <td>{{App\Models\UserDetail::find($camera_posting->member_id)->firstname}}
+                                             </td>
+                                             <td>
+                                             {{App\Models\UserDetail::find($camera_posting->member_id)->lastname}}
+                                             </td>
                                              <td>{{App\Models\User::find($camera_posting->user_id)->name}}</td>
-                                             <td>{{App\Models\UserDetail::find($camera_posting->user_id)->work_phone}}</td>
-                                             <td>{{App\Models\User::find($camera_posting->user_id)->gender}}</td>
+                                             <td>{{App\Models\UserDetail::find($camera_posting->member_id)->work_phone}}</td>
+                                             <td>{{App\Models\User::find($camera_posting->member_id)->gender}}</td>
                                              <td>{{$camera_posting->created_at->diffForHumans()}}</td>
                                              <td>{{$camera_posting->end_date}}</td>
                                             
                                             </tr>
                                             @endforeach;
+                                            @else
+                                            <tr>
+                                               <td></td>
+                                               <td><p> No Record Found for Camera Subunit </p></td>
+                                            </tr>
+                                            @endunless
                                        </tbody>
                                     </table>
                                  </div>
@@ -107,14 +117,6 @@
                                 <option value="female">Female</option>
                             </select>
                             </div>
-
-                            <!-- <label for="basic-url">Message Description</label>
-                            <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Message Description</span>
-                            </div>
-                            <textarea class="form-control" aria-label="With textarea"></textarea>
-                            </div> -->
                        </div>                     
                   <!-- Modal footer -->
                   <div class="modal-footer">

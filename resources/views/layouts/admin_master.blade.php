@@ -46,7 +46,7 @@
                      <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                         <div class="logo_section">
-                           <a href="index.html"><img class="img-responsive" src="{{asset('backend/assets/logos/main_logo2.jpg ')}}" alt="#" /></a>
+                           <a href="{{route('dashboard')}}"><img class="img-responsive" src="{{asset('backend/assets/logos/main_logo2.jpg ')}}" alt="#" /></a>
                         </div>
                         <div class="right_topbar">
                            <div class="icon_info">
@@ -78,7 +78,7 @@
                   <div class="container-fluid ">
                         <div class="footer">
                             <p>Copyright © 2022 | Technical Crew Unit D/Line Port Harcourt. All rights reserved.<br><br>
-                            Designed By: <a href="#">tombrowngodwin</a>
+                            Designed By: <a href="#">tcu-team-D/Line</a>
                             </p>
                         </div>
                     </div>

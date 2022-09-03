@@ -40,43 +40,25 @@
                                           </tr>
                                        </thead>
                                        <tbody>
-                                          @foreach($cable_posted_member as $cable_posted)
+                                         @unless($cable_posted_member->isEmpty())
+                                         @foreach($cable_posted_member as $cable_posted)
                                           <tr>
                                              <td>{{ $loop->index+1}}</td>
-                                             <td>
-                                                @if($cable_posted->UserDetail !=null)
-                                                {{ App\Models\UserDetail::find($cable_posted->member_id)->firstname}}
-                                                @else
-                                                @endif
-                                             </td>
-                                             <td>@if($cable_posted->UserDetail !=null)
-                                             {{App\Models\UserDetail::find($cable_posted->member_id)->lastname }}
-                                             @else
-                                             @endif
-                                             </td>
-                                             <td>
-                                                @if($cable_posted->UserDetail !=null)
-                                                {{App\Models\User::find($cable_posted->user_id)->name }}
-                                                @else
-                                                @endif
-                                             </td>
-                                             <td>
-                                                @if($cable_posted->UserDetail !=null)
-                                                {{App\Models\UserDetail::find($cable_posted->user_id)->work_phone}}
-                                                @else
-                                                @endif
-                                             </td>
-                                             <td>
-                                                @if($cable_posted->UserDetail !=null)
-                                                {{App\Models\User::find($cable_posted->user_id)->gender}}
-                                                @else
-                                                @endif
-                                             </td>
+                                             <td>{{ App\Models\UserDetail::find($cable_posted->member_id)->firstname}}</td>
+                                             <td>{{App\Models\UserDetail::find($cable_posted->member_id)->lastname }}</td>
+                                             <td>{{App\Models\User::find($cable_posted->user_id)->name }}</td>
+                                             <td>{{App\Models\UserDetail::find($cable_posted->member_id)->work_phone}}</td>
+                                             <td> {{App\Models\User::find($cable_posted->member_id)->gender}}</td>
                                              <td>{{$cable_posted->created_at->diffForHumans()}}</td>
                                              <td>{{$cable_posted->end_date}}</td>
                                              
                                           </tr>
                                           @endforeach
+                                          @else
+                                             <tr>
+                                                <td></td><td><p class="text-center">No Record Available for Cable Subunit</p></td>
+                                             </tr>
+                                          @endunless
                                        </tbody>
                                     </table>
                                  </div>

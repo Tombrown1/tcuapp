@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnSurnameToUserDetailsTable extends Migration
+class AddColumnResetPasswordToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddColumnSurnameToUserDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_details', function (Blueprint $table) {
-            $table->after('posting_id', function($table){
-                $table->string('surname')->nullable();
+        Schema::table('users', function (Blueprint $table) {            
+            $table->after('post_count', function($table){
+                $table->integer('resetPassword');
             });
         });
     }
@@ -27,8 +27,8 @@ class AddColumnSurnameToUserDetailsTable extends Migration
      */
     public function down()
     {
-        // Schema::table('user_details', function (Blueprint $table) {
-        //     $table->dropColumn('surname');
-        // });
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

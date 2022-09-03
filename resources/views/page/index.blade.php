@@ -17,7 +17,7 @@
               @foreach($announcement as $announce)
                 <div class="card">
                     <div class="img">
-                      <img src="{{asset($announce->image)}}" width="100px" height="100px" alt="">
+                      <img src="{{asset('/storage/'.$announce->image)}}" width="100px" height="100px" alt="Annoucenment Image">
                     </div>
                     <div class="content">
                       <!-- <div class="title">

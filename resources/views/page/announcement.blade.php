@@ -1,6 +1,5 @@
-@section('title', 'View Announcement')
 @extends('page.page_master')
-
+@section('title', 'View Announcement')
 @section('content')
 
 
@@ -17,28 +16,25 @@
 
       </div>
 </section> -->
-<br> <br><br> <br><br> <br>
+
 
     <!-- ======= Portfolio Section ======= -->
     <id="portfolio" class="portfolio-area area-padding fix">
       <div class="container">
+       
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="section-headline text-center">
-                <h2>Unit Announcement</h2>
+                     <br><br><br><br><br>
+                    <h2>Unit Announcement</h2>
                 </div>
-            </div>
-        </div>        
-
-            <div class="row awesome-project-content portfolio-container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8">
+            </div>  
+            <div class="col-md-8">
                             <div class="card mt-3">
                                 <div class="card-body">
                                     <div class="card">
                                         <h3>{{$view_announce->title}}</h3> <br>
-                                        <img src="{{asset($view_announce->image)}}"  alt=""> <br>
+                                        <img src="{{asset('/storage/'.$view_announce->image)}}"  alt=""> <br>
                                         <p class="text-justify">{{$view_announce->message}}</p>
                                     </div>
                                 </div>
@@ -64,15 +60,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>                  
-
-            </div>
-
-
+                        </div>          
+        </div>  
       </div>
-    </div><!-- End Portfolio Section -->
+    <!-- End Portfolio Section -->
 
   
 

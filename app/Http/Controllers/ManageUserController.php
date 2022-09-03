@@ -41,7 +41,7 @@ class ManageUserController extends Controller
        //  dd($request);
         $fullname = $request->surname. ' ' .$request->fname. ' '. $request->lname;
         $name = explode(" ", trim($request->fname));
-        $username = $name[0].rand(4,10000);
+        $username = $name[0].rand(4,99999);
         $password = $username;
         // return $username;
         // $password = Hash::make('yourPa$$w0rd');
@@ -92,10 +92,10 @@ class ManageUserController extends Controller
         
     }
 
-    public function deluser($id)
-    {
-        $user = User::destroy($id);
-        return back()->with('message', 'User Deleted Successfully!');
-    }
+    // public function deluser($id)
+    // {
+    //     $user = User::destroy($id);
+    //     return back()->with('message', 'User Deleted Successfully!');
+    // }
 
 }

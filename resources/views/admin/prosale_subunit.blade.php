@@ -38,19 +38,26 @@
                                           </tr>
                                        </thead>
                                        <tbody>
-                                          @foreach($prosale_posted_member as $prosale_posting)
+                                         @unless($prosale_posted_member->isEmpty())
+                                         @foreach($prosale_posted_member as $prosale_posting)
                                           <tr>
                                              <td>{{$loop->index +1}}</td>
                                              <td>{{App\Models\UserDetail::find($prosale_posting->member_id)->firstname}}</td>
                                              <td>{{App\Models\UserDetail::find($prosale_posting->member_id)->lastname}}</td>
                                              <td>{{App\Models\User::find($prosale_posting->user_id)->name}}</td>
-                                             <td>{{App\Models\UserDetail::find($prosale_posting->user_id)->work_phone}}</td>
-                                             <td>{{App\Models\UserDetail::find($prosale_posting->user_id)->gender}}</td>
+                                             <td>{{App\Models\UserDetail::find($prosale_posting->member_id)->work_phone}}</td>
+                                             <td>{{App\Models\UserDetail::find($prosale_posting->member_id)->gender}}</td>
                                              <td>{{$prosale_posting->created_at->diffForHumans()}}</td>
                                              <td>{{$prosale_posting->end_date}}</td>
                                              
                                           </tr>
                                           @endforeach
+                                         @else
+                                             <tr>
+                                                <td></td>
+                                                <td><p>No Record Found for Sales/Production Subunit </p></td>
+                                             </tr>
+                                         @endunless
                                        </tbody>
                                     </table>
                                  </div>

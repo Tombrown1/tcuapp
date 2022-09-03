@@ -40,7 +40,7 @@
                 </p>
                 <div class="footer-contacts">
                   <p><span>Tel:</span> +234 806 907 1539</p>
-                  <p><span>Email:</span> godwintombrown@gmail.com</p>
+                  <p><span>Email:</span> tcudline@gmail.com</p>
                   <p><span>Sunday Service:</span> 6am-2pm</p>
                   <p><span>Wednesday Service Hour:</span> 5pm-6:30pm</p>
                   <p><span>Covenant Service Hour:</span> 6am-7am</p>
@@ -59,7 +59,7 @@
                 </p>
                 <div class="footer-contacts">
                   <p><span>Address</span>#4 Kaduna Street D/Line, Port Harcourt</p>
-                  <p><span>Email:</span> godwintombrown@gmail.com</p>
+                  <p><span>Email:</span>tcudline@gmail.com</p>
                   <p><span>Sunday Service:</span> 6am-2pm</p>
                   <p><span>Wednesday Service Hour:</span> 5pm-6:30pm</p>
                   <p><span>Covenant Service Hour:</span> 6am-7am</p>
@@ -94,7 +94,7 @@
               Licensing information: https://bootstrapmade.com/license/
               Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
             -->
-             App Developed by <a href="#">tombrowngodwin</a>
+             App Developed by <a href="#">tcu-team-D/Line</a>
             </div>
           </div>
         </div>

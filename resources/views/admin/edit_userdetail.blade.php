@@ -511,7 +511,15 @@
                                             <span class="input-group-text" id="basic-addon3">WOFBI CLASS</span>
                                         </div>
                                         <select name="wofbi_id" id="" class="form-control">
-                                            <option value="{{$user->details->wofbi_id}}">{{$user->details->wofbi_id}}</option>
+                                            <option value="{{$user->details->wofbi_id}}">
+                                                @if($user->details->wofbi_id == 1)
+                                                    BCC
+                                                @elseif($user->details->wofbi_id == 2)
+                                                    LCC
+                                                @else
+                                                LDC
+                                                @endif
+                                            </option>
                                             <option value="1">BCC</option>
                                             <option value="2">LCC</option>
                                             <option value="3">LDC</option>

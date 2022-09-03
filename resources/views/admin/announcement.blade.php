@@ -66,7 +66,8 @@
                                           </tr>
                                        </thead>                                       
                                        <tbody>
-                                          @foreach($announcement as $announce)
+                                         @unless($announcement->isEmpty())
+                                         @foreach($announcement as $announce)
                                           <tr>
                                              <td>{{$loop->index +1}}</td>
                                              <td>{{$announce->title}}</td>
@@ -90,7 +91,7 @@
                                              <td><a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editannounce{{$announce->id}}">Edit</a></td>
                                              <td><a href="{{route('view.announcement', ['id' => $announce->id])}}" type="button" class="btn btn-success">View</a></td>                                             
                                            </tr>
-                        <!-- The  Modal For Edot Announcement-->
+                        <!-- The  Modal For Edit Announcement-->
          <div class="modal fade" id="editannounce{{$announce->id}}">
             <div class="modal-dialog modal-md">
                <div class="modal-content">
@@ -155,6 +156,13 @@
          <!-- End Edit Announcement model popup begins here -->
 
                                           @endforeach
+                                         @else
+                                         <tr>
+                                            <td></td>
+                                            <td><p>No Record Found!</p></td>
+                                         </tr>
+                                         @endunless
+
                                        </tbody>
                                     </table>
                                  </div>
